@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bloomify | Fresh Flowers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #f8e1ea;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #b8326a;
+            font-size: 28px;
+        }
+
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #b8326a;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url("https://images.unsplash.com/photo-1490750967868-88aa4486c946");
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background-color: #b8326a;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #a1265c;
+        }
+
+        /* Products */
+        .products {
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #b8326a;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 15px 0 5px;
+        }
+
+        .product-card p {
+            color: #b8326a;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8e1ea;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Bloomify</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Fresh Flowers, Fresh Feelings</h2>
+        <p>Beautiful hand-picked flowers delivered straight to your door.</p>
+        <a href="#" class="btn">Shop Now</a>
+    </div>
+</section>
+
+<section class="products">
+    <h2>Best Sellers</h2>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+            <h3>Rose Bouquet</h3>
+            <p>$25.00</p>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b">
+            <h3>Tulip Mix</h3>
+            <p>$30.00</p>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551">
+            <h3>Sunflower Bundle</h3>
+            <p>$20.00</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Bloomify Flowers. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
