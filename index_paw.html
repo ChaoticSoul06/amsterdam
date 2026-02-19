@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PawFinds | Find & Rescue Cats and Dogs Near You</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        header {
+            background: #ff6b6b;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1517849845537-4d257902454a');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 15px;
+            flex: 1;
+            outline: none;
+        }
+
+        .search-box button {
+            background: #ff6b6b;
+            border: none;
+            padding: 15px 25px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #ff4c4c;
+        }
+
+        /* Featured Pets */
+        .featured {
+            padding: 60px;
+            text-align: center;
+        }
+
+        .featured h3 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .pet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .pet-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .pet-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pet-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pet-card .info {
+            padding: 20px;
+        }
+
+        .pet-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .pet-card p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: #fff0f0;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            max-width: 250px;
+        }
+
+        .step h4 {
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 60px;
+            text-align: center;
+        }
+
+        .cta button {
+            padding: 15px 40px;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cta button:hover {
+            background: #ff4c4c;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PawFinds 🐾</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Find Pets</a>
+        <a href="#">Post a Pet</a>
+        <a href="#">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Help Rescue Cats & Dogs Near You</h2>
+    <p>Find lost, abandoned, or stray pets in your area and help them find safety.</p>
+    <div class="search-box">
+        <input type="text" placeholder="Enter your city or ZIP code">
+        <button>Search</button>
+    </div>
+</section>
+
+<section class="featured">
+    <h3>Recently Posted Pets</h3>
+    <div class="pet-grid">
+        <div class="pet-card">
+            <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d" alt="Dog">
+            <div class="info">
+                <h4>Friendly Brown Dog</h4>
+                <p>Seen near Central Park. Needs rescue assistance.</p>
+            </div>
+        </div>
+
+        <div class="pet-card">
+            <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" alt="Cat">
+            <div class="info">
+                <h4>White Stray Cat</h4>
+                <p>Spotted behind grocery store. Appears injured.</p>
+            </div>
+        </div>
+
+        <div class="pet-card">
+            <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" alt="Dog">
+            <div class="info">
+                <h4>Small Puppy</h4>
+                <p>Found wandering near highway. Very scared.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h3>How PawFinds Works</h3>
+    <div class="steps">
+        <div class="step">
+            <h4>1. Search</h4>
+            <p>Look for cats and dogs reported in your area.</p>
+        </div>
+        <div class="step">
+            <h4>2. Post</h4>
+            <p>Upload pictures and details of pets needing help.</p>
+        </div>
+        <div class="step">
+            <h4>3. Rescue</h4>
+            <p>Connect with rescuers and give animals a second chance.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h3>Spotted a Pet That Needs Help?</h3>
+    <br>
+    <button>Post Now</button>
+</section>
+
+<footer>
+    © 2026 PawFinds | Helping Every Paw Find Safety 🐶🐱
+</footer>
+
+</body>
+</html>
