@@ -33,21 +33,22 @@ pipeline {
                 '''
             }
         }
-
         stage('Deploy') {
             steps {
                 echo 'Deploying to XAMPP htdocs'
 
                 bat '''
                 if not exist "%DEPLOY_DIR%" mkdir "%DEPLOY_DIR%"
-                
-                REM Optional: clean old files
-                del /Q "%DEPLOY_DIR%\\*"
-                
+
+                REM Clean old files completely
+                rmdir /S /Q "%DEPLOY_DIR%"
+                mkdir "%DEPLOY_DIR%"
+
+                REM Copy everything fresh
                 xcopy /E /I /Y "%WORKSPACE%\\*" "%DEPLOY_DIR%\\"
                 '''
-            }
-        }
+    }
+}
     }
 
     post {
