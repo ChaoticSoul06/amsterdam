@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DEPLOY_DIR = "E:\\deploy\\my-website"
+        DEPLOY_DIR = "E:\\xampp\\htdocs\\amsterdam"
     }
 
     stages {
@@ -36,10 +36,14 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying to local folder'
+                echo 'Deploying to XAMPP htdocs'
 
                 bat '''
                 if not exist "%DEPLOY_DIR%" mkdir "%DEPLOY_DIR%"
+                
+                REM Optional: clean old files
+                del /Q "%DEPLOY_DIR%\\*"
+                
                 xcopy /E /I /Y "%WORKSPACE%\\*" "%DEPLOY_DIR%\\"
                 '''
             }
@@ -48,7 +52,7 @@ pipeline {
 
     post {
         success {
-            echo '✅ Deployment successful!'
+            echo '✅ Deployment successful! Visit http://localhost/amsterdam'
         }
         failure {
             echo '❌ Build failed. Check logs.'
