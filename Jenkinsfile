@@ -1,31 +1,57 @@
 pipeline {
     agent any
 
+    environment {
+        DEPLOY_DIR = "E:\\deploy\\my-website"
+    }
+
     stages {
-        stage('Clone') {
+
+        stage('Checkout') {
             steps {
-                echo 'Cloning repository...'
+                echo 'Code is automatically checked out by Jenkins (Multibranch)'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'No build needed for HTML'
+                echo 'No build required for static HTML project'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Checking if index.html exists'
-                bat 'if exist index.html (echo File exists) else (exit 1)'
+
+                bat '''
+                if exist "%WORKSPACE%\\index.html" (
+                    echo File exists
+                ) else (
+                    echo index.html not found
+                    exit 1
+                )
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying to XAMPP htdocs'
-                bat 'copy index.html E:\\xampp\\htdocs\\'
+                echo 'Deploying to local folder'
+
+                bat '''
+                if not exist "%DEPLOY_DIR%" mkdir "%DEPLOY_DIR%"
+                xcopy /E /I /Y "%WORKSPACE%\\*" "%DEPLOY_DIR%\\"
+                '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Deployment successful!'
+        }
+        failure {
+            echo '❌ Build failed. Check logs.'
         }
     }
 }
