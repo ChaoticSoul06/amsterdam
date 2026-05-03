@@ -2,61 +2,42 @@ pipeline {
     agent any
 
     environment {
-        DEPLOY_DIR = "E:\\xampp\\htdocs\\amsterdam"
+        IMAGE_NAME = "amsterdam"
+        CONTAINER_NAME = "amsterdam_${env.BRANCH_NAME}"
+        PORT = "808${env.BUILD_NUMBER}"
     }
 
     stages {
 
-        stage('Checkout') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Code is automatically checked out by Jenkins (Multibranch)'
+                echo "Building Docker image..."
+                bat 'docker build -t %IMAGE_NAME% .'
             }
         }
 
-        stage('Build') {
+        stage('Remove Old Container') {
             steps {
-                echo 'No build required for static HTML project'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Checking if index.html exists'
-
+                echo "Removing old container if exists..."
                 bat '''
-                if exist "%WORKSPACE%\\index.html" (
-                    echo File exists
-                ) else (
-                    echo index.html not found
-                    exit 1
-                )
+                docker rm -f %CONTAINER_NAME% || exit 0
                 '''
             }
         }
-        stage('Deploy') {
+
+        stage('Run Container') {
             steps {
-                echo 'Deploying to XAMPP htdocs'
-
+                echo "Running container..."
                 bat '''
-                if not exist "%DEPLOY_DIR%" mkdir "%DEPLOY_DIR%"
-
-                REM Clean old files completely
-                rmdir /S /Q "%DEPLOY_DIR%"
-                mkdir "%DEPLOY_DIR%"
-
-                REM Copy everything fresh
-                xcopy /E /I /Y "%WORKSPACE%\\*" "%DEPLOY_DIR%\\"
+                docker run -d -p %PORT%:80 --name %CONTAINER_NAME% %IMAGE_NAME%
                 '''
-    }
-}
+            }
+        }
     }
 
     post {
         success {
-            echo '✅ Deployment successful! Visit http://localhost/amsterdam'
-        }
-        failure {
-            echo '❌ Build failed. Check logs.'
+            echo "Deployed at http://localhost:${env.PORT}"
         }
     }
 }
